@@ -1,9 +1,15 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+const token = localStorage.getItem('token');
+
 const client = axios.create({
-  baseURL: 'https://6396262c90ac47c6807edb6f.mockapi.io',
+  baseURL: 'https://connections-api.herokuapp.com/',
 });
+
+if (token) {
+  client.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
@@ -34,7 +40,7 @@ export const addContact = createAsyncThunk(
 );
 
 export const deleteContact = createAsyncThunk(
-  'contacts/deleteTask',
+  'contacts/deleteContact',
   async (contactId, thunkAPI) => {
     try {
       const response = await client.delete(`/contacts/${contactId}`);
