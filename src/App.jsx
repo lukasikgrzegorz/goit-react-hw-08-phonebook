@@ -5,13 +5,14 @@ import Login from 'pages/Login';
 import './App.module.css';
 
 function App() {
+
   return (
     <>
       <div>
         <section>
           <Routes>
-            <Route path="/" element={<Contacts />} />
-            <Route path="/login" element={<Login />} />
+            <Route index path="/" element={<Contacts />} />
+            <Route path="login" element={<Login />} />
           </Routes>
         </section>
       </div>
