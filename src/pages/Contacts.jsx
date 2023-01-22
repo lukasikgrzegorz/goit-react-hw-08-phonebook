@@ -30,15 +30,16 @@ const Contacts = () => {
 
   return (
     <>
-      <UserMenu />
-      <div>
+      <header>
+        <UserMenu />
+      </header>
+      <div className="container">
         <h1>Phonebook</h1>
         <ContactForm />
         <h2>Contacts</h2>
         <Filter />
         {isLoading && !error && <b>Loading...</b>}
         <ContactList />
-        <NavLink to="/login">Sign up</NavLink>
       </div>
     </>
   );

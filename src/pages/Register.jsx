@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { registerUser, refreshUser } from 'redux/operations';
 import { getIsLogged } from 'redux/selectors';
 import Navigation from 'components/Navigation/Navigation';
+import Logo from 'components/Logo/Logo';
 
 const Register = () => {
   const isLogged = useSelector(getIsLogged);
@@ -30,8 +31,11 @@ const Register = () => {
 
   return (
     <>
-      <Navigation />
-      <div>
+      <header>
+        <Navigation />
+      </header>
+      <div className="container">
+        <Logo></Logo>
         <div>
           <form onSubmit={handleSubmit}>
             <div>
