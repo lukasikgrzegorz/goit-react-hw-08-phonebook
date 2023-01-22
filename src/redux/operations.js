@@ -7,7 +7,6 @@ const client = axios.create({
   baseURL: 'https://connections-api.herokuapp.com/',
 });
 
-
 const setAuthHeader = token => {
   client.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -17,7 +16,7 @@ const clearAuthHeader = () => {
 };
 
 export const loginUser = createAsyncThunk(
-  'contacts/login',
+  'user/login',
   async (credentials, thunkAPI) => {
     try {
       const response = await client.post('/users/login', credentials);
@@ -31,7 +30,7 @@ export const loginUser = createAsyncThunk(
 );
 
 export const refreshUser = createAsyncThunk(
-  'contacts/refresh',
+  'user/refresh',
   async (_, thunkAPI) => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -44,6 +43,20 @@ export const refreshUser = createAsyncThunk(
       }
     } else {
       return thunkAPI.rejectWithValue(null);
+    }
+  }
+);
+
+export const logoutUser = createAsyncThunk(
+  'user/logout',
+  async (_, thunkAPI) => {
+    try {
+      const response = await client.post('/users/logout');
+      console.log(response.data);
+      clearAuthHeader();
+      localStorage.clear();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
