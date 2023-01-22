@@ -4,7 +4,7 @@ import Filter from '../components/Filter/Filter';
 import ContactList from '../components/ContactList/ContactList';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
-import { getError, getIsLoading } from 'redux/selectors';
+import { getError, getIsLoading } from 'redux/contacts/selectors';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 const Contacts = () => {
