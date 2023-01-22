@@ -25,6 +25,13 @@ ul{
 a{
   text-decoration: none;
   color: currentColor;
+  font-weight: 500;
+  transition: color 300ms linear;
+}
+
+a:hover,
+a:focus{
+  color: #cc584c;
 }
 
 header{
@@ -32,6 +39,35 @@ header{
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+button{
+  padding: 10px 15px;
+  cursor: pointer;
+
+  border: none;
+  border-radius: 10px;
+  background-color: #88c5cc;
+  font: inherit;
+  font-size: 14px;
+  transition: background-color 300ms linear,
+              transform 300ms linear;
+}
+
+button:hover,
+button:focus {
+  transform: scale(1.1);
+  background-color: #96e2eb;
+}
+
+input{
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 5px;
+  outline: none;
+  background-color: #dff7f9;
+
 }
 
 .container{
@@ -46,3 +82,7 @@ header{
   justify-content: center;
   text-align: center;
 }
+
+
+
+

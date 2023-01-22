@@ -5,6 +5,7 @@ import { getFilter } from 'redux/selectors';
 import { useSelector } from 'react-redux';
 import { deleteContact } from 'redux/operations';
 import { useDispatch } from 'react-redux';
+import css from "./ContactList.module.css"
 
 const ContactList = () => {
   const contacts = useSelector(getContacts);
@@ -16,7 +17,7 @@ const ContactList = () => {
   };
 
   return (
-    <ul>
+    <ul className={css['list']}>
       {contacts
         .filter(contact =>
           contact.name.toLowerCase().includes(filter.toLowerCase())
