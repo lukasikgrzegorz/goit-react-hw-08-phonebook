@@ -61,6 +61,22 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
+export const registerUser = createAsyncThunk(
+  'user/register',
+  async (credentials, thunkAPI) => {
+    try {
+      const response = await client.post('/users/signup', credentials);
+      setAuthHeader(response.data.token);
+      localStorage.setItem('token', response.data.token);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+
+
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
