@@ -3,7 +3,7 @@ import Contact from './Contact/Contact';
 import { getContacts } from 'redux/contacts/selectors';
 import { getFilter } from 'redux/contacts/selectors';
 import { useSelector } from 'react-redux';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/operations';
 import { useDispatch } from 'react-redux';
 
 const ContactList = () => {

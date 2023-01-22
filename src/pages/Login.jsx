@@ -1,28 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { loginUser, refreshUser } from 'redux/auth/operations';
+import { getIsLogged } from 'redux/auth/slectors';
 
 const Login = () => {
+  const isLogged = useSelector(getIsLogged);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+    if (isLogged === true) {
+      navigate('/');
+    }
+  }, [isLogged]);
 
   const handleSubmit = async e => {
     e.preventDefault();
-
-    const client = axios.create({
-      baseURL: 'https://connections-api.herokuapp.com/',
-    });
-
-    try {
-      const response = await client.post('/users/login', {
+    dispatch(
+      loginUser({
         email: e.target.email.value,
         password: e.target.password.value,
-      });
-      console.log(response.data);
-      localStorage.setItem('token', response.data.token);
-      navigate('/');
-    } catch (error) {
-      console.log(error);
-    }
+      })
+    );
   };
 
   return (
