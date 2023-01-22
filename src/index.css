@@ -39,7 +39,10 @@ header{
   height: 90vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+
+.center{
+  justify-content: center;
   text-align: center;
 }

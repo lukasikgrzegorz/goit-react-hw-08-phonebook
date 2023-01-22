@@ -34,7 +34,7 @@ const Login = () => {
         <Navigation />
       </header>
 
-      <div className="container">
+      <div className="container center">
         <Logo />
         <div>
           <form onSubmit={handleSubmit}>

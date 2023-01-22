@@ -34,7 +34,7 @@ const Register = () => {
       <header>
         <Navigation />
       </header>
-      <div className="container">
+      <div className="container center">
         <Logo></Logo>
         <div>
           <form onSubmit={handleSubmit}>
