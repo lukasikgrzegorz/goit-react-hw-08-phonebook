@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { loginUser, refreshUser } from 'redux/auth/operations';
-import { getIsLogged } from 'redux/auth/slectors';
+import { loginUser, refreshUser } from 'redux/operations';
+import { getIsLogged } from 'redux/selectors';
 
 const Login = () => {
   const isLogged = useSelector(getIsLogged);

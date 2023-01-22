@@ -1,9 +1,9 @@
 import React from 'react';
 import Contact from './Contact/Contact';
-import { getContacts } from 'redux/contacts/selectors';
-import { getFilter } from 'redux/contacts/selectors';
+import { getContacts } from 'redux/selectors';
+import { getFilter } from 'redux/selectors';
 import { useSelector } from 'react-redux';
-import { deleteContact } from 'redux/contacts/operations';
+import { deleteContact } from 'redux/operations';
 import { useDispatch } from 'react-redux';
 
 const ContactList = () => {

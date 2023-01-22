@@ -3,11 +3,11 @@ import ContactForm from '../components/ContactForm/ContactForm';
 import Filter from '../components/Filter/Filter';
 import ContactList from '../components/ContactList/ContactList';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/contacts/operations';
-import { getError, getIsLoading } from 'redux/contacts/selectors';
+import { fetchContacts } from 'redux/operations';
+import { getError, getIsLoading } from 'redux/selectors';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { getIsLogged } from 'redux/auth/slectors';
-import { refreshUser } from 'redux/auth/operations';
+import { getIsLogged } from 'redux/selectors';
+import { refreshUser } from 'redux/operations';
 
 const Contacts = () => {
   const navigate = useNavigate();
