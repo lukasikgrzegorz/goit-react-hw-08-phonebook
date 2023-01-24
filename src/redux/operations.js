@@ -48,6 +48,7 @@ export const logoutUser = createAsyncThunk(
     try {
       const response = await client.post('/users/logout');
       localStorage.clear();
+      return response;
     } catch (error) {
       alert(error.message);
       return thunkAPI.rejectWithValue(error.message);
