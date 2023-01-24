@@ -6,23 +6,11 @@ import UserMenu from 'components/UserMenu/UserMenu';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
 import { getError, getIsLoading } from 'redux/selectors';
-import { useNavigate } from 'react-router-dom';
-import { getIsLogged } from 'redux/selectors';
-import { refreshUser } from 'redux/operations';
 
 const Contacts = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
-  const isLogged = useSelector(getIsLogged);
-
-  useEffect(() => {
-    dispatch(refreshUser());
-    if (isLogged === false) {
-      navigate('/login');
-    }
-  }, [isLogged]);
 
   useEffect(() => {
     dispatch(fetchContacts());
