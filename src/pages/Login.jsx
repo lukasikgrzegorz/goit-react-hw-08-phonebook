@@ -16,7 +16,7 @@ const Login = () => {
     if (isLogged) {
       navigate('/');
     }
-  }, [isLogged]);
+  }, [isLogged, dispatch, navigate]);
 
   const handleSubmit = async e => {
     e.preventDefault();
