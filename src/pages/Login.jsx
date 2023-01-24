@@ -13,7 +13,7 @@ const Login = () => {
 
   useEffect(() => {
     dispatch(refreshUser());
-    if (isLogged === true) {
+    if (isLogged) {
       navigate('/');
     }
   }, [isLogged]);

@@ -1,29 +1,24 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const token = localStorage.getItem('token');
-
 const client = axios.create({
   baseURL: 'https://connections-api.herokuapp.com/',
 });
 
-const setAuthHeader = token => {
-  client.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-const clearAuthHeader = () => {
-  client.defaults.headers.common.Authorization = '';
-};
+client.interceptors.request.use(config => {
+  config.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+  return config;
+});
 
 export const loginUser = createAsyncThunk(
   'user/login',
   async (credentials, thunkAPI) => {
     try {
       const response = await client.post('/users/login', credentials);
-      setAuthHeader(response.data.token);
       localStorage.setItem('token', response.data.token);
       return response.data;
     } catch (error) {
+      alert(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -35,10 +30,10 @@ export const refreshUser = createAsyncThunk(
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        setAuthHeader(token);
         const response = await client.get('/users/current');
         return response.data;
       } catch (error) {
+        alert(error.message);
         return thunkAPI.rejectWithValue(error.message);
       }
     } else {
@@ -52,10 +47,9 @@ export const logoutUser = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await client.post('/users/logout');
-      console.log(response.data);
-      clearAuthHeader();
       localStorage.clear();
     } catch (error) {
+      alert(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -66,16 +60,14 @@ export const registerUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await client.post('/users/signup', credentials);
-      setAuthHeader(response.data.token);
       localStorage.setItem('token', response.data.token);
       return response.data;
     } catch (error) {
+      alert(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
-
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',

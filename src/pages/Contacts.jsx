@@ -6,7 +6,7 @@ import UserMenu from 'components/UserMenu/UserMenu';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
 import { getError, getIsLoading } from 'redux/selectors';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getIsLogged } from 'redux/selectors';
 import { refreshUser } from 'redux/operations';
 
