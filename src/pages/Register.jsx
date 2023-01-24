@@ -16,7 +16,7 @@ const Register = () => {
     if (isLogged === true) {
       navigate('/');
     }
-  }, [isLogged]);
+  }, [isLogged, dispatch, navigate]);
 
   const handleSubmit = async e => {
     e.preventDefault();
